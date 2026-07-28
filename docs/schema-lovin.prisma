@@ -1,0 +1,151 @@
+// ============================================================================
+// Lovin marketplace — schema additions (Prisma / MySQL)
+// ----------------------------------------------------------------------------
+// This file is a *consolidated, copy-pasteable* view of the Lovin deltas.
+// Merge these blocks into the existing prisma/schema.prisma (or apply via a
+// new migration). Existing tables are NOT dropped — we only extend & add.
+// Run: npx prisma migrate dev --name lovin_marketplace
+// ============================================================================
+
+// ---- 1. New enums ----------------------------------------------------------
+enum ListingStatus   { DRAFT  PENDING_REVIEW  PUBLISHED  REJECTED  ARCHIVED }
+enum ItemCondition   { NEW  LIKE_NEW  USED  REFURBISHED  FOR_PARTS }
+enum LeadSource      { PRODUCT_PAGE  SEARCH  CATEGORY  SELLER_CARD  QR_CODE }
+enum AnalyticsKind   { PAGE_VIEW  PRODUCT_VIEW  WHATSAPP_CLICK  SEARCH  CATEGORY_VIEW }
+enum SellerStatus    { PENDING  ACTIVE  SUSPENDED  REJECTED }
+
+// ---- 2. Extend Product -----------------------------------------------------
+// (add the fields below to the existing Product model)
+model Product {
+  // ...keep all existing fields...
+
+  status          ListingStatus   @default(DRAFT)
+  condition       ItemCondition   @default(NEW)
+  currency        String          @default("KES")
+  // price Int  -- existing; interpreted as MINOR units (cents)
+  locationCity    String?
+  locationRegion  String?
+  tags            Json?
+  whatsappPhone   String?
+  externalUrl     String?
+  shippingInfo    String?
+  sku             String?
+  featured        Boolean         @default(false)
+  moderationNote  String?
+  publishedAt     DateTime?
+
+  // relations
+  merchantId      String
+  merchant        Merchant        @relation(fields: [merchantId], references: [id])
+  sellerProfileId String?
+  sellerProfile   SellerProfile?  @relation(fields: [sellerProfileId], references: [id])
+  leads           Lead[]
+  analytics       AnalyticsEvent[]
+  imageVariants   ImageVariant[]
+  moderation      ModerationAction[]
+
+  @@index([status, publishedAt])
+  @@index([categoryId, status])
+  @@index([sellerProfileId])
+  @@index([featured])
+}
+
+// ---- 3. Extend Category (nested + SEO) -------------------------------------
+model Category {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  slug      String     @unique
+  parentId  String?
+  parent    Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children  Category[] @relation("CategoryTree")
+  icon      String?
+  image     String?
+  products  Product[]
+  @@index([parentId])
+}
+
+// ---- 4. New tables ---------------------------------------------------------
+model SellerProfile {
+  id              String       @id @default(uuid())
+  userId          String       @unique
+  user            User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  displayName     String
+  slug            String       @unique
+  defaultPhone    String                       // E.164
+  whatsappEnabled Boolean      @default(true)
+  city            String?
+  region          String?
+  avatarUrl       String?
+  status          SellerStatus @default(PENDING)
+  featuredSeller  Boolean      @default(false)
+  createdAt       DateTime     @default(now())
+  products        Product[]
+  leads           Lead[]
+  @@index([status])
+}
+
+model Lead {
+  id          String        @id @default(uuid())
+  productId   String
+  product     Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sellerId    String?
+  seller      SellerProfile? @relation(fields: [sellerId], references: [id])
+  buyerId     String                        // anonymous cookie id (no PII)
+  phone       String                        // seller phone contacted
+  source      LeadSource    @default(PRODUCT_PAGE)
+  message     String?
+  ipHash      String?
+  createdAt   DateTime      @default(now())
+  @@index([productId, createdAt])
+  @@index([sellerId, createdAt])
+}
+
+model AnalyticsEvent {
+  id         String        @id @default(uuid())
+  kind       AnalyticsKind
+  productId  String?
+  product    Product?      @relation(fields: [productId], references: [id])
+  categoryId String?
+  sellerId   String?
+  buyerId    String
+  meta       Json?
+  createdAt  DateTime      @default(now())
+  @@index([kind, createdAt])
+  @@index([productId])
+  @@index([buyerId])
+}
+
+model ImageVariant {
+  id           String   @id @default(uuid())
+  productId    String
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  publicId     String
+  url          String
+  width        Int
+  height       Int
+  format       String   // webp|avif|jpg
+  role         String   // main|gallery|thumb|og
+  altText      String?
+  @@index([productId, role])
+}
+
+model ModerationAction {
+  id         String   @id @default(uuid())
+  productId  String?
+  product    Product? @relation(fields: [productId], references: [id])
+  sellerId   String?
+  adminId    String?
+  action     String   // approve|reject|feature|hide|suspend
+  reason     String?
+  createdAt  DateTime @default(now())
+  @@index([productId])
+}
+
+model SearchQuery {
+  id        String   @id @default(uuid())
+  query     String
+  results   Int
+  buyerId   String
+  createdAt DateTime @default(now())
+  @@index([query, createdAt])
+}

@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lovin — Home</title><link rel="stylesheet" href="_wire.css"></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a href="index.html" class="logo">Lovin<b>.</b></a>
+  <div class="search"><input placeholder="Search products, brands, categories…"><button class="btn dark">Search</button></div>
+  <a class="navlink" href="02-category-browse.html">Browse</a>
+  <a class="navlink" href="04-seller-dashboard.html">Sell</a>
+  <a class="btn" href="05-seller-single-listing.html">+ List item</a>
+</div></div>
+
+<div class="frame"><div class="wrap col" style="gap:18px">
+
+  <!-- Hero -->
+  <div class="box" style="display:flex;gap:20px;align-items:center;background:linear-gradient(90deg,#fff,#f0fdf4)">
+    <div style="flex:1">
+      <div class="pill">No sign-up to shop</div>
+      <h1 class="h1" style="margin:10px 0 6px">Find it. Tap to chat.</h1>
+      <p class="muted">Thousands of listings from local sellers. See something you like — message the seller on WhatsApp instantly.</p>
+      <div class="row" style="margin-top:14px;flex-wrap:wrap">
+        <button class="wa"> Open WhatsApp demo</button>
+        <a class="btn" href="02-category-browse.html">Browse categories →</a>
+      </div>
+    </div>
+    <div class="ph" style="width:240px;height:150px">hero / lifestyle photo</div>
+  </div>
+
+  <!-- Category tiles -->
+  <div>
+    <div class="between" style="margin-bottom:8px"><h2 class="h2">Shop by category</h2><a class="muted" style="font-size:12px">See all</a></div>
+    <div class="grid g5">
+      <a class="box center col" style="gap:6px"><div class="ph" style="width:54px;height:54px">🎧</div><b>Electronics</b><span class="muted" style="font-size:11px">1.2k</span></a>
+      <a class="box center col" style="gap:6px"><div class="ph" style="width:54px;height:54px">👗</div><b>Fashion</b><span class="muted" style="font-size:11px">980</span></a>
+      <a class="box center col" style="gap:6px"><div class="ph" style="width:54px;height:54px">🪑</div><b>Home &amp; Garden</b><span class="muted" style="font-size:11px">640</span></a>
+      <a class="box center col" style="gap:6px"><div class="ph" style="width:54px;height:54px">🚗</div><b>Vehicles</b><span class="muted" style="font-size:11px">412</span></a>
+      <a class="box center col" style="gap:6px"><div class="ph" style="width:54px;height:54px">🏠</div><b>Property</b><span class="muted" style="font-size:11px">233</span></a>
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <div>
+    <div class="between" style="margin-bottom:8px"><h2 class="h2">Featured listings</h2><span class="pill">⭐ curated by admin</span></div>
+    <div class="grid g5">
+      <a class="card" href="03-product-detail.html"><div class="ph">600×600</div><div class="body"><div class="bar w80"></div><div class="price" style="margin-top:6px">KES 129,990</div><div class="muted" style="font-size:11px">Nairobi · <span class="star">★</span> 4.8</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w60"></div><div class="price" style="margin-top:6px">KES 39,999</div><div class="muted" style="font-size:11px">Mombasa · <span class="star">★</span> 4.6</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w80"></div><div class="price" style="margin-top:6px">KES 15,000</div><div class="muted" style="font-size:11px">Kisumu · <span class="star">★</span> 4.4</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w40"></div><div class="price" style="margin-top:6px">KES 8,500</div><div class="muted" style="font-size:11px">Nakuru · <span class="star">★</span> 4.2</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w80"></div><div class="price" style="margin-top:6px">USD 2,499</div><div class="muted" style="font-size:11px">Nairobi · <span class="star">★</span> 5.0</div></div></a>
+    </div>
+  </div>
+
+  <!-- Newest / infinite scroll seed -->
+  <div>
+    <div class="between" style="margin-bottom:8px"><h2 class="h2">Just listed</h2><span class="muted" style="font-size:12px">↓ infinite scroll</span></div>
+    <div class="grid g5">
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w60"></div><div class="price" style="margin-top:6px">KES 5,200</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w80"></div><div class="price" style="margin-top:6px">KES 3,100</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w40"></div><div class="price" style="margin-top:6px">KES 9,900</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w80"></div><div class="price" style="margin-top:6px">KES 1,750</div></div></a>
+      <a class="card"><div class="ph">600×600</div><div class="body"><div class="bar w60"></div><div class="price" style="margin-top:6px">KES 22,000</div></div></a>
+    </div>
+  </div>
+
+  <div class="note"><b>Home rationale:</b> category tiles give SEO landing pages (<code>/c/:slug</code>), featured = admin-curated (<code>featured=true</code>), "Just listed" seeds infinite scroll (IntersectionObserver → <code>GET /api/products?sort=newest&amp;page=n</code>). No login UI shown to buyers.</div>
+</div></div>
+<div class="legend"><span class="sw" style="background:#e5e7eb"></span> 1 · Home</div>
+</body></html>
