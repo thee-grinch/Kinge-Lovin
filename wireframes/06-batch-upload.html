@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lovin — Batch upload (CSV + ZIP)</title><link rel="stylesheet" href="_wire.css"></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a href="index.html" class="logo">Lovin<b>.</b></a>
+  <span class="chip">👤 Mobility Hub</span>
+  <a class="navlink" href="04-seller-dashboard.html">← Dashboard</a>
+</div></div>
+
+<div class="frame"><div class="wrap" style="max-width:920px">
+  <h1 class="h1">Batch upload</h1>
+  <p class="muted" style="font-size:13px;margin:4px 0 14px">Upload a CSV of listings + an optional ZIP of images. Map columns, fix errors, then publish in bulk.</p>
+
+  <!-- stepper -->
+  <div class="row" style="margin-bottom:16px">
+    <span class="chip" style="background:#dcfce7;border-color:#86efac;color:#166534">1 · Upload ✓</span>
+    <span class="chip" style="background:#dcfce7;border-color:#86efac;color:#166534">2 · Map columns ✓</span>
+    <span class="chip" style="background:#dbeafe;border-color:#93c5fd;color:#1e40af">3 · Validate</span>
+    <span class="chip">4 · Publish</span>
+  </div>
+
+  <div class="col" style="gap:16px">
+
+    <!-- step 1: upload -->
+    <div class="box">
+      <h3 class="h3">1 · Files</h3>
+      <div class="grid g2" style="margin-top:10px">
+        <div class="upload"><b>📄 listings.csv</b><br><span class="muted" style="font-size:11px">5 rows detected · ✓</span><br><div class="row" style="justify-content:center;margin-top:8px"><button class="btn ghost">Replace</button></div></div>
+        <div class="upload"><b>🗜 images.zip</b><br><span class="muted" style="font-size:11px">12 images · matched to SKU</span><br><div class="row" style="justify-content:center;margin-top:8px"><button class="btn ghost">Replace</button></div></div>
+      </div>
+    </div>
+
+    <!-- step 2: column mapping -->
+    <div class="box">
+      <h3 class="h3">2 · Map columns <span class="muted" style="font-weight:400;font-size:12px">(auto-guessed — adjust if needed)</span></h3>
+      <table style="margin-top:8px">
+        <thead><tr><th>CSV header</th><th>→</th><th>Lovin field</th><th>Required</th></tr></thead>
+        <tbody>
+          <tr><td><code>title</code></td><td>→</td><td><select><option>title</option></select></td><td>✓</td></tr>
+          <tr><td><code>price</code></td><td>→</td><td><select><option>price</option></select></td><td>✓</td></tr>
+          <tr><td><code>price_currency</code></td><td>→</td><td><select><option>currency</option></select></td><td></td></tr>
+          <tr><td><code>imageRefs</code></td><td>→</td><td><select><option>imageRefs (zip filenames or URLs)</option></select></td><td></td></tr>
+          <tr><td><code>whatsapp</code></td><td>→</td><td><select><option>whatsappPhone</option></select></td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- step 3: validate preview -->
+    <div class="box">
+      <div class="between"><h3 class="h3">3 · Validate &amp; preview</h3>
+        <span class="badge b-amber">3 ready · 1 error · 1 warning</span></div>
+      <table style="margin-top:8px">
+        <thead><tr><th>#</th><th>Title</th><th>Price</th><th>Phone</th><th>Images</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Samsung Galaxy S24 Ultra</td><td>1299.99 KES</td><td>+254712345678</td><td>s24-1.jpg, s24-2.jpg ✓</td><td><span class="badge b-green">ready</span></td></tr>
+          <tr><td>2</td><td>Sony WH-1000XM5</td><td>399.99 KES</td><td>0712 345 678</td><td>xm5.jpg ✓</td><td><span class="badge b-green">ready</span></td></tr>
+          <tr><td>3</td><td>Canon EOS R6 II</td><td>2499.99 USD</td><td>+254700111222</td><td>— (none)</td><td><span class="badge b-amber">no image</span></td></tr>
+          <tr><td>4</td><td>Toyota Vitz 2018</td><td>18,500 KES</td><td>12345</td><td>vitz.jpg</td><td><span class="badge b-red">phone too short</span></td></tr>
+          <tr><td>5</td><td>ikea MALM desk</td><td>65 KES</td><td>+254722333444</td><td>desk.jpg ✓</td><td><span class="badge b-green">ready</span></td></tr>
+        </tbody>
+      </table>
+      <div class="muted" style="font-size:12px;margin-top:8px">Click a row to edit inline before publishing. Bad rows are skipped (or fixed) and reported on the batch.</div>
+    </div>
+
+    <!-- step 4: publish -->
+    <div class="box between">
+      <div class="muted" style="font-size:12px">Batch <code>batch_9f3a…</code> · 3 valid rows will be created</div>
+      <div class="row">
+        <button class="btn dark">Draft all (3)</button>
+        <button class="wa" style="padding:10px 18px">Publish all (3)</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:14px"><b>Backend:</b> CSV parsed with <code>csv-parse</code> (already a dep); ZIP streamed to Cloudinary per image; results stored in the existing <code>bulk_upload_batch</code>/<code>bulk_upload_item</code> tables (extended with Lovin fields). CSV spec + sample: <code>docs/lovin-bulk-upload-spec.csv</code>. Phone validated by <code>normalizePhone()</code>; unknown category slugs flagged or auto-created per seller setting.</div>
+</div></div>
+<div class="legend"><span class="sw" style="background:#e5e7eb"></span> 6 · Batch upload</div>
+</body></html>

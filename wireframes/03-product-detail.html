@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lovin — Product detail + Click-to-Chat</title><link rel="stylesheet" href="_wire.css"></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a href="index.html" class="logo">Lovin<b>.</b></a>
+  <div class="search"><input><button class="btn dark">Search</button></div>
+  <a class="navlink" href="01-home.html">Home</a>
+  <a class="navlink" href="02-category-browse.html">Electronics</a>
+</div></div>
+
+<div class="frame"><div class="wrap col" style="gap:16px">
+  <div class="muted" style="font-size:12px">Home / Electronics / Phones / <b style="color:#111827">Samsung Galaxy S24 Ultra</b></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+
+    <!-- Gallery -->
+    <div class="col" style="gap:10px">
+      <div class="ph" style="height:380px">1200×1200 · main image (AVIF/WebP via Cloudinary)</div>
+      <div class="row" style="flex-wrap:wrap">
+        <div class="ph" style="width:78px;height:78px;border:2px solid var(--wa-d)">1</div>
+        <div class="ph" style="width:78px;height:78px">2</div>
+        <div class="ph" style="width:78px;height:78px">3</div>
+        <div class="ph" style="width:78px;height:78px">4</div>
+      </div>
+    </div>
+
+    <!-- Buy box -->
+    <div class="col" style="gap:12px">
+      <div class="row between">
+        <h1 class="h1">Samsung Galaxy S24 Ultra</h1>
+        <span class="badge b-blue">#88AB12</span>
+      </div>
+      <div class="row" style="align-items:center"><span class="price" style="font-size:24px;font-weight:800">KES 129,990</span><span class="pill" style="margin-left:8px">New</span></div>
+      <div class="muted" style="font-size:13px">📍 Nairobi, Nairobi · SKU S24U-256 · In stock: 5</div>
+
+      <div class="row" style="flex-wrap:wrap">
+        <span class="tag">5G</span><span class="tag">flagship</span><span class="tag">android</span><span class="tag">200MP</span>
+      </div>
+
+      <!-- The conversion: WhatsApp -->
+      <div class="box" style="background:#f0fdf4;border-color:#bbf7d0">
+        <div class="label" style="color:#166534">Contact seller</div>
+        <p style="margin:6px 0;font-size:13px">No checkout — message the seller directly. Your details stay between you and WhatsApp.</p>
+        <input class="field" style="width:100%" placeholder="Optional: add a note for the seller…">
+        <div style="height:8px"></div>
+        <button class="wa lg"> Chat with Mobility Hub on WhatsApp</button>
+        <div class="muted" style="font-size:11px;margin-top:8px">Opens WhatsApp with a prefilled message. Don't have WhatsApp? <a href="#" style="text-decoration:underline">See fallback</a>.</div>
+      </div>
+
+      <!-- Seller card -->
+      <div class="box row" style="align-items:center;gap:12px">
+        <div class="ph" style="width:48px;height:48px;border-radius:50%">avatar</div>
+        <div class="grow">
+          <div class="h3">Mobility Hub</div>
+          <div class="muted" style="font-size:12px">Member since 2025 · 34 listings · responds fast ⚡</div>
+        </div>
+        <button class="btn ghost">View shop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description + specs -->
+  <div class="grid g2">
+    <div class="box">
+      <h3 class="h3">Description</h3>
+      <div class="col" style="gap:8px;margin-top:8px">
+        <div class="bar w100"></div><div class="bar w100"></div><div class="bar w80"></div>
+        <div class="bar w100"></div><div class="bar w60"></div>
+      </div>
+    </div>
+    <div class="box">
+      <h3 class="h3">Details</h3>
+      <table style="margin-top:6px">
+        <tr><th>Condition</th><td>New</td></tr>
+        <tr><th>Shipping</th><td>Nationwide 1–2 days</td></tr>
+        <tr><th>External link</th><td><span class="muted">shop.example.com/s24</span></td></tr>
+        <tr><th>Posted</th><td>2 days ago</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="note"><b>Click-to-Chat anatomy:</b> the green button is the <u>only</u> call-to-action — there is no cart/checkout.
+  Click → <code>POST /api/whatsapp/click</code> (logs a <code>Lead</code> + analytics) → returns
+  <code>https://wa.me/254712345678?text=Hi%20Mobility%20Hub%2C%20I'm%20interested%20in%20%22Samsung%20Galaxy%20S24%20Ultra%22%20(%2388AB12)…</code>
+  → WhatsApp opens prefilled. JSON-LD <code>Product/Offer</code> injected for SEO; <code>og:image</code> uses the Cloudinary <code>og</code> variant.</div>
+</div></div>
+<div class="legend"><span class="sw" style="background:#25D366"></span> 3 · Product + WhatsApp</div>
+</body></html>

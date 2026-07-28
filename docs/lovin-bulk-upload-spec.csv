@@ -1,0 +1,6 @@
+title,description,category,price,currency,condition,stock,city,region,tags,whatsappPhone,externalUrl,shippingInfo,sku,imageRefs
+"Samsung Galaxy S24 Ultra","Flagship 2024. 200MP camera, S Pen, 5000mAh, 12GB RAM, 256GB.","electronics",1299.99,KES,NEW,5,Nairobi,Nairobi,"5G;flagship;android",+254712345678,https://shop.example.com/s24,Nationwide delivery 1-2 days,S24U-256,"s24-1.jpg;s24-2.jpg"
+"Sony WH-1000XM5 Headphones","Industry-leading noise cancelling, 30h battery.","electronics",399.99,KES,LIKE_NEW,12,Mombasa,Coast,"audio;bluetooth;anc",0712 345 678,,Pickup Mombasa CBD,WH1000XM5,xm5.jpg
+"Canon EOS R6 Mark II","Full-frame mirrorless, 24.2MP, 4K60.","electronics",2499.99,USD,USED,2,Kisumu,Kisumu,"camera;mirrorless;4k",+254700111222,https://canon.com,r602,CANON-R6M2,
+"ikea MALM desk","Birch veneer, 140x60cm, minor scratches.","home-garden",65,KES,USED,1,Nakuru,Nakuru,"furniture;desk",0722333444,,Pickup only,MALM-140,desk.jpg
+"Toyota Vitz 2018","Low mileage 49k km, automatic, service history.","vehicles",18500,KES,USED,1,Nairobi,Nairobi,"car;automatic;hatchback",+254733555666,,Test drive Westlands,VITZ2018,vitz.jpg

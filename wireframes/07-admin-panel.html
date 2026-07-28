@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lovin — Admin panel</title><link rel="stylesheet" href="_wire.css"></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a href="index.html" class="logo">Lovin<b>.</b> <span class="badge b-blue" style="margin-left:6px">admin</span></a>
+  <div class="row"><span class="chip" style="background:#111827;color:#fff;border-color:#111827">Moderation</span><span class="chip">Sellers</span><span class="chip">Categories</span><span class="chip">Analytics</span></div>
+  <span class="chip">👤 admin@lovin</span>
+</div></div>
+
+<div class="frame"><div class="wrap col" style="gap:16px">
+
+  <!-- KPI strip -->
+  <div class="grid g5">
+    <div class="box"><div class="label">Pending review</div><div style="font-size:24px;font-weight:800" class="muted">18</div></div>
+    <div class="box"><div class="label">Sellers (active)</div><div style="font-size:24px;font-weight:800">240</div></div>
+    <div class="box"><div class="label">Live listings</div><div style="font-size:24px;font-weight:800">3,890</div></div>
+    <div class="box"><div class="label">Leads (30d)</div><div style="font-size:24px;font-weight:800;color:var(--wa-d)">12.4k</div></div>
+    <div class="box"><div class="label">Abuse reports</div><div style="font-size:24px;font-weight:800;color:#b91c1c">6</div></div>
+  </div>
+
+  <div class="grid g2">
+
+    <!-- Moderation queue -->
+    <div class="box">
+      <div class="between"><h3 class="h3">Moderation queue</h3>
+        <select class="btn ghost"><option>Pending review (18)</option><option>Reported (6)</option></select></div>
+      <div class="col" style="gap:10px;margin-top:10px">
+        <div class="box" style="display:flex;gap:10px;padding:10px">
+          <div class="ph" style="width:64px;height:64px;flex:none">img</div>
+          <div class="grow">
+            <div class="between"><b>iPhone 15 Pro Max</b><span class="badge b-amber">reported</span></div>
+            <div class="muted" style="font-size:12px">by Quick Phones · KES 180,000 · Nairobi · 2 reports</div>
+            <div class="row" style="margin-top:6px"><button class="btn ghost" style="padding:4px 10px">View</button><button class="wa" style="padding:4px 10px;font-size:12px">Approve</button><button class="btn ghost" style="padding:4px 10px">Reject</button><button class="btn ghost" style="padding:4px 10px">⭐ Feature</button></div>
+          </div>
+        </div>
+        <div class="box" style="display:flex;gap:10px;padding:10px">
+          <div class="ph" style="width:64px;height:64px;flex:none">img</div>
+          <div class="grow">
+            <div class="between"><b>Used sofa set</b><span class="badge b-gray">new</span></div>
+            <div class="muted" style="font-size:12px">by HomeGoods KE · KES 35,000 · Mombasa</div>
+            <div class="row" style="margin-top:6px"><button class="btn ghost" style="padding:4px 10px">View</button><button class="wa" style="padding:4px 10px;font-size:12px">Approve</button><button class="btn ghost" style="padding:4px 10px">Reject</button></div>
+          </div>
+        </div>
+        <div class="box" style="display:flex;gap:10px;padding:10px">
+          <div class="ph" style="width:64px;height:64px;flex:none">img</div>
+          <div class="grow">
+            <div class="between"><b>PS5 + 3 games</b><span class="badge b-gray">new</span></div>
+            <div class="muted" style="font-size:12px">by GameZone · KES 62,000 · Nairobi</div>
+            <div class="row" style="margin-top:6px"><button class="btn ghost" style="padding:4px 10px">View</button><button class="wa" style="padding:4px 10px;font-size:12px">Approve</button><button class="btn ghost" style="padding:4px 10px">Reject</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right column -->
+    <div class="col" style="gap:16px">
+      <!-- analytics -->
+      <div class="box">
+        <div class="between"><h3 class="h3">Marketplace analytics (30d)</h3><button class="btn ghost" style="padding:4px 10px">⬇ Export CSV</button></div>
+        <div class="bars" style="margin-top:12px">
+          <div style="height:50%"></div><div style="height:62%"></div><div style="height:58%"></div>
+          <div class="hot" style="height:40%"></div><div style="height:70%"></div><div style="height:66%"></div>
+          <div class="hot" style="height:48%"></div><div style="height:80%"></div><div style="height:72%"></div>
+          <div class="hot" style="height:55%"></div><div style="height:88%"></div><div style="height:76%"></div>
+          <div class="hot" style="height:60%"></div><div style="height:92%"></div>
+        </div>
+        <table style="margin-top:10px">
+          <tr><th>Top categories</th><th>Leads</th><th>Conv.</th></tr>
+          <tr><td>Electronics</td><td>5,210</td><td>4.6%</td></tr>
+          <tr><td>Fashion</td><td>2,840</td><td>3.1%</td></tr>
+          <tr><td>Vehicles</td><td>1,990</td><td>5.8%</td></tr>
+        </table>
+      </div>
+
+      <!-- sellers -->
+      <div class="box">
+        <div class="between"><h3 class="h3">Sellers awaiting approval</h3><span class="badge b-amber">3 pending</span></div>
+        <table style="margin-top:8px">
+          <tr><th>Seller</th><th>City</th><th>Phone</th><th></th></tr>
+          <tr><td>Tech Bazaar</td><td>Nairobi</td><td>+254…</td><td><button class="wa" style="padding:3px 8px;font-size:11px;border-radius:8px">Approve</button> <button class="btn ghost" style="padding:3px 8px;font-size:11px">Suspend</button></td></tr>
+          <tr><td>Coast Decor</td><td>Mombasa</td><td>+254…</td><td><button class="wa" style="padding:3px 8px;font-size:11px;border-radius:8px">Approve</button> <button class="btn ghost" style="padding:3px 8px;font-size:11px">Suspend</button></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="note"><b>Admin scope:</b> gated by NextAuth <code>role=admin</code> (see <code>middleware.ts</code>). Moderation writes <code>ModerationAction</code>; featured toggles <code>Product.featured</code>; seller status moves <code>PENDING→ACTIVE/SUSPENDED</code>. Analytics aggregated from <code>AnalyticsEvent</code> + <code>Lead</code>; export via <code>GET /api/admin/analytics/export.csv</code>.</div>
+</div></div>
+<div class="legend"><span class="sw" style="background:#e5e7eb"></span> 7 · Admin</div>
+</body></html>

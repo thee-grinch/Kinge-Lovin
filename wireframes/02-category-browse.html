@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lovin — Category / Browse</title><link rel="stylesheet" href="_wire.css"></head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a href="index.html" class="logo">Lovin<b>.</b></a>
+  <div class="search"><input value="galaxy"><button class="btn dark">Search</button></div>
+  <a class="navlink" href="01-home.html">Home</a>
+  <a class="navlink" href="04-seller-dashboard.html">Sell</a>
+</div></div>
+
+<div class="frame"><div class="wrap col" style="gap:14px">
+
+  <div class="muted" style="font-size:12px">Home / <b style="color:#111827">Electronics</b></div>
+  <div class="between" style="align-items:flex-end;flex-wrap:wrap;gap:10px">
+    <div><h1 class="h1">Electronics</h1><span class="muted" style="font-size:12px">512 listings · Nairobi, Mombasa, Kisumu…</span></div>
+    <div class="row" style="flex-wrap:wrap">
+      <span class="chip">📷 100% new</span>
+      <span class="chip">⭐ Featured only</span>
+      <select class="btn ghost"><option>Sort: Newest</option><option>Price ↑</option><option>Price ↓</option></select>
+      <button class="btn">⚙ Filters</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:240px 1fr;gap:14px;align-items:start">
+
+    <!-- Filter sidebar -->
+    <div class="col filter" style="gap:16px">
+      <div class="box">
+        <h4>Price (KES)</h4>
+        <div class="range"><div class="dot" style="left:8%"></div><div class="dot" style="left:62%"></div></div>
+        <div class="between"><span class="chip">KES 500</span><span class="chip">KES 50,000</span></div>
+      </div>
+      <div class="box">
+        <h4>Condition</h4>
+        <div class="col" style="gap:6px;margin-top:6px">
+          <label><input type="checkbox" checked> New</label>
+          <label><input type="checkbox"> Like new</label>
+          <label><input type="checkbox" checked> Used</label>
+          <label><input type="checkbox"> Refurbished</label>
+          <label><input type="checkbox"> For parts</label>
+        </div>
+      </div>
+      <div class="box">
+        <h4>Location</h4>
+        <input class="bar w100" style="height:30px;border:1px solid var(--line);border-radius:8px" placeholder="🔍 City or region">
+        <div class="col" style="gap:6px;margin-top:8px">
+          <label><input type="checkbox" checked> Nairobi</label>
+          <label><input type="checkbox"> Mombasa</label>
+          <label><input type="checkbox"> Kisumu</label>
+        </div>
+      </div>
+      <div class="box">
+        <h4>Category</h4>
+        <div class="col" style="gap:4px;font-size:13px">
+          <a>📱 Phones <span class="muted">(210)</span></a>
+          <a>💻 Laptops <span class="muted">(120)</span></a>
+          <a>🎧 Audio <span class="muted">(98)</span></a>
+          <a>📺 TVs <span class="muted">(54)</span></a>
+        </div>
+      </div>
+      <button class="btn ghost" style="justify-content:center">Clear all</button>
+    </div>
+
+    <!-- Product grid -->
+    <div class="col" style="gap:14px">
+      <div class="grid g4">
+        <a class="card" href="03-product-detail.html"><div class="ph">600×600</div><div class="body"><span class="tag">New</span><div class="bar w80" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 129,990</div><div class="muted" style="font-size:11px">Nairobi · Mobility Hub</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">Like new</span><div class="bar w60" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 39,999</div><div class="muted" style="font-size:11px">Mombasa</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">Used</span><div class="bar w80" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 15,000</div><div class="muted" style="font-size:11px">Kisumu</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">New</span><div class="bar w40" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 8,500</div><div class="muted" style="font-size:11px">Nakuru</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">Used</span><div class="bar w80" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 22,000</div><div class="muted" style="font-size:11px">Nairobi</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">Refurbished</span><div class="bar w60" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 5,200</div><div class="muted" style="font-size:11px">Eldoret</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">New</span><div class="bar w80" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 3,100</div><div class="muted" style="font-size:11px">Nairobi</div></div></a>
+        <a class="card"><div class="ph">600×600</div><div class="body"><span class="tag">Used</span><div class="bar w40" style="margin-top:6px"></div><div class="price" style="margin-top:6px">KES 9,900</div><div class="muted" style="font-size:11px">Thika</div></div></a>
+      </div>
+      <div class="box center" style="color:var(--muted);font-size:13px">↓ scroll to load 504 more (IntersectionObserver → <code>?page=2</code>)</div>
+    </div>
+  </div>
+
+  <div class="note"><b>Filters</b> map to query params (<code>min,max,condition,city,sort,page</code>). Sidebar collapses to a bottom-sheet <b>Filters</b> button on mobile (≤768px). Each card links to <code>/p/:slug</code>. Grid is the SSR/ISR category landing for SEO.</div>
+</div></div>
+<div class="legend"><span class="sw" style="background:#e5e7eb"></span> 2 · Category</div>
+</body></html>
