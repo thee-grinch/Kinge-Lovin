@@ -68,6 +68,7 @@ model Customer_order {
   orderNotice String?
   total       Int
   products    customer_order_product[]
+  payment     Payment?
 }
 
 model customer_order_product {
@@ -188,4 +189,42 @@ enum BulkUploadItemStatus {
   CREATED
   UPDATED
   ERROR
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  MESA
+  CREDIT_CARD
+  DEBIT_CARD
+  PAYPAL
+  BANK_TRANSFER
+}
+
+model Payment {
+  id              String        @id @default(uuid())
+  orderId         String        @unique
+  order           Customer_order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount          Int
+  currency        String        @default("USD")
+  status          PaymentStatus @default(PENDING)
+  method          PaymentMethod @default(MESA)
+  transactionId   String?       @unique
+  paymentDetails  Json?
+  errorMessage    String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  completedAt     DateTime?
+  refundedAt      DateTime?
+
+  @@index([orderId])
+  @@index([status])
+  @@index([transactionId])
 }
